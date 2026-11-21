@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Robert's Rules Cheat Sheet · Living Word Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#13294b; --navy-2:#1d3a66; --gold:#f2b634; --coral:#f2665e; --teal:#159e98; --cream:#fff8ec;
+  --ink:#13294b; --muted:#4d5b74; --card:#ffffff; --line:#e9dfcd;
+  --yes:#16a36a; --no:#e0483f; --twothirds:#e59a00;
+  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.hero{background:var(--navy);color:#fff;padding:28px 0 26px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--coral);opacity:.9}
+.hero::before{content:"";position:absolute;right:70px;bottom:-70px;width:150px;height:150px;border-radius:50%;background:var(--gold)}
+.hero .wrap{position:relative;z-index:1}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(34px,9vw,54px);font-weight:800;margin:8px 0 10px;max-width:12ch}
+.hero p{margin:0;max-width:34ch;color:#dbe3f1}
+.golden{margin-top:18px;background:rgba(255,255,255,.1);border-left:5px solid var(--gold);border-radius:10px;padding:12px 14px;max-width:44ch;font-size:15px}
+.golden b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:5;background:var(--cream);border-bottom:2px solid var(--line)}
+nav .wrap{display:flex;gap:8px;overflow-x:auto;padding:10px 18px;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;font-weight:700;font-size:14px;padding:7px 13px;border-radius:999px;background:var(--card);border:2px solid var(--navy)}
+nav a:focus-visible,button:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+section{padding:30px 0 6px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.tag{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:19px;color:#fff}
+.sec-head h2{font-size:clamp(24px,6vw,32px);font-weight:800}
+.lede{color:var(--muted);margin:-4px 0 14px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.steps li{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:start;background:var(--card);border-radius:16px;padding:14px;border:2px solid var(--line)}
+.num{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:24px;color:#fff}
+.steps h3{font-size:19px;margin-bottom:3px}
+.steps p{margin:0;color:var(--muted);font-size:15px}
+.say{display:inline-block;margin-top:6px;background:var(--cream);border-radius:8px;padding:3px 8px;font-weight:700;color:var(--ink);font-size:14px}
+.hook{margin-top:14px;background:var(--gold);border-radius:16px;padding:16px;font-family:var(--display);font-weight:800;font-size:clamp(18px,4.8vw,22px);line-height:1.3}
+.hook small{display:block;font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.filters button{font:inherit;font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px;border:2px solid var(--navy);background:var(--card);color:var(--navy);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--muted);margin-bottom:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:4px;display:inline-block}
+.motions{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.m{background:var(--card);border-radius:16px;padding:14px;border:2px solid var(--line);border-top:6px solid var(--teal);display:flex;flex-direction:column;gap:8px}
+.m[data-group="anytime"]{border-top-color:var(--coral)}
+.m[data-group="revisit"]{border-top-color:var(--gold)}
+.m h3{font-size:18px}
+.m q{font-weight:600;color:var(--navy-2);font-size:15px}
+.m .note{font-size:13px;color:var(--muted);margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;color:#fff;white-space:nowrap}
+.pill.y{background:var(--yes)} .pill.n{background:var(--no)} .pill.t{background:var(--twothirds)} .pill.v{background:var(--navy)}
+.m[hidden]{display:none}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;font:inherit;font-weight:700;padding:10px;border-radius:12px;border:2px solid var(--teal);background:var(--card);color:var(--teal);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--teal);color:#fff}
+.scripts{display:grid;gap:8px}
+.scripts[hidden]{display:none}
+.line{background:var(--card);border-radius:14px;padding:12px 14px;border-left:6px solid var(--teal)}
+.line b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:2px}
+.line span{font-weight:500}
+.vote-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.vcard{border-radius:16px;padding:14px;color:#fff}
+.vcard h3{font-size:20px;margin-bottom:4px}
+.vcard p{margin:0;font-size:15px;opacity:.95}
+.vcard.check{background:var(--card);color:var(--ink);border:2px dashed var(--navy)}
+.brown{background:var(--coral);color:#fff;border-radius:20px;padding:18px}
+.brown ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.brown li{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px}
+.brown li b{display:block;font-family:var(--display);font-size:18px}
+.mistakes{display:grid;gap:10px}
+.mk{display:grid;grid-template-columns:1fr;border-radius:14px;overflow:hidden;border:2px solid var(--line)}
+.mk .oops{background:#fde4e1;padding:10px 14px;font-weight:700}
+.mk .oops::before{content:"Oops: ";color:var(--no)}
+.mk .fix{background:#e1f5ec;padding:10px 14px}
+.mk .fix::before{content:"Fix: ";font-weight:700;color:var(--yes)}
+.quiz-band{background:var(--navy);color:#fff;margin-top:30px;padding:30px 0 34px}
+.quiz-band .lede{color:#c9d4e8}
+.score{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-weight:700}
+.bar{flex:1;height:12px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.q{background:var(--navy-2);border-radius:16px;padding:14px;margin-bottom:10px}
+.q p{margin:0 0 10px;font-weight:600}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts button{font:inherit;font-weight:700;padding:9px 16px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;min-width:84px}
+.opts button.right{background:var(--yes);border-color:var(--yes)}
+.opts button.wrong{background:var(--no);border-color:var(--no)}
+.opts button:disabled{cursor:default}
+.answer{margin-top:10px;font-size:15px;color:#dbe3f1}
+.answer[hidden]{display:none}
+.trophy{margin-top:14px;background:var(--gold);color:var(--navy);border-radius:16px;padding:14px;font-family:var(--display);font-weight:800;font-size:20px;text-align:center}
+.trophy[hidden]{display:none}
+.reset{margin-top:12px;font:inherit;font-weight:700;background:none;border:0;color:var(--gold);text-decoration:underline;cursor:pointer;padding:0}
+.relay{margin-top:18px;border:2px dashed var(--gold);border-radius:16px;padding:14px}
+.relay h3{color:var(--gold);font-size:20px;margin-bottom:4px}
+.relay p{margin:0;color:#dbe3f1}
+footer{background:var(--navy);color:#9fb0cc;font-size:13px;padding:0 0 26px}
+footer .wrap{border-top:1px solid rgba(255,255,255,.15);padding-top:14px}
+@media (prefers-reduced-motion: reduce){ .bar i{transition:none} html{scroll-behavior:auto} }
+html{scroll-behavior:smooth}
+section{scroll-margin-top:60px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Living Word Community Church · Board Training</div>
+    <h1>Robert's Rules Cheat Sheet</h1>
+    <p>Run meetings like a pro. Keep this open on your phone at the board table.</p>
+    <div class="golden"><b>Golden rule:</b> The Living Word Bylaws and the law come first. Robert's Rules fills in the rest. Its 3 jobs: the majority decides, the minority is heard, the meeting keeps moving.</div>
+  </div>
+</header>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#steps">6 Steps</a>
+    <a href="#motions">Motions</a>
+    <a href="#scripts">Say This</a>
+    <a href="#voting">Voting</a>
+    <a href="#guardrails">Guardrails</a>
+    <a href="#mistakes">Oops &amp; Fixes</a>
+    <a href="#quiz">Pop Quiz</a>
+  </div>
+</nav>
+
+<main>
+<section id="steps">
+  <div class="wrap">
+    <div class="sec-head"><div class="tag" style="background:var(--coral)">1</div><h2>The 6 Steps of Every Motion</h2></div>
+    <ol class="steps">
+      <li><div class="num" style="background:var(--coral)">1</div><div><h3>Get the floor</h3><p>Raise your hand. Speak only after the Chair recognizes you.</p></div></li>
+      <li><div class="num" style="background:var(--gold);color:var(--navy)">2</div><div><h3>Make the motion</h3><p>State the exact action. One idea per motion.</p><span class="say">"I move that..."</span></div></li>
+      <li><div class="num" style="background:var(--teal)">3</div><div><h3>Get a second</h3><p>No second, no motion. A second means "let's discuss it," not "I agree."</p><span class="say">"Second."</span></div></li>
+      <li><div class="num" style="background:var(--navy)">4</div><div><h3>Chair states it</h3><p>The Chair repeats it word for word. Now it belongs to the board.</p><span class="say">"It has been moved and seconded that..."</span></div></li>
+      <li><div class="num" style="background:var(--coral)">5</div><div><h3>Discuss</h3><p>Maker speaks first. Talk through the Chair. Nobody speaks twice until everyone has spoken once.</p></div></li>
+      <li><div class="num" style="background:var(--teal)">6</div><div><h3>Vote and announce</h3><p>Voice, hands, or roll call. The Chair announces yes, no, abstain, and whether it passes or fails. The Secretary records it.</p></div></li>
+    </ol>
+    <div class="hook"><small>Memory hook</small>Move it. Second it. State it. Debate it. Vote it. Announce it.</div>
+  </div>
+</section>
+
+<section id="motions">
+  <div class="wrap">
+    <div class="sec-head"><div class="tag" style="background:var(--teal)">2</div><h2>Motion Finder</h2></div>
+    <p class="lede">Ranked from highest to lowest priority. A higher motion can interrupt a lower one.</p>
+    <div class="filters" role="group" aria-label="Filter motions">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">All</button>
+      <button type="button" id="f-ranked" data-f="ranked" aria-pressed="false">Ranked</button>
+      <button type="button" id="f-anytime" data-f="anytime" aria-pressed="false">Anytime</button>
+      <button type="button" id="f-revisit" data-f="revisit" aria-pressed="false">Revisit a decision</button>
+    </div>
+    <div class="legend"><span><i class="dot" style="background:var(--yes)"></i>Yes</span><span><i class="dot" style="background:var(--no)"></i>No</span><span><i class="dot" style="background:var(--twothirds)"></i>Needs 2/3</span><span><i class="dot" style="background:var(--navy)"></i>Vote needed</span></div>
+    <div class="motions" id="motion-list"></div>
+  </div>
+</section>
+
+<section id="scripts">
+  <div class="wrap">
+    <div class="sec-head"><div class="tag" style="background:var(--gold);color:var(--navy)">3</div><h2>Say This</h2></div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-members" aria-selected="true" aria-controls="s-members">Board members</button>
+      <button type="button" role="tab" id="tab-chair" aria-selected="false" aria-controls="s-chair">The Chair</button>
+    </div>
+    <div class="scripts" id="s-members" role="tabpanel" aria-labelledby="tab-members">
+      <div class="line"><b>Make a motion</b><span>"Madam/Mr. Chair, I move that the board approve [action] for [$] for [purpose]."</span></div>
+      <div class="line"><b>Adopt a resolution</b><span>"I move that the board adopt Resolution [number], approving [action]."</span></div>
+      <div class="line"><b>Amend</b><span>"I move to amend the motion by adding [words] after [words]."</span></div>
+      <div class="line"><b>Friendly amendment</b><span>"Would the maker accept adding [words]?" If anyone objects, it needs a second and a vote.</span></div>
+      <div class="line"><b>Ask a question</b><span>"Point of information. How much is left in our budget line?"</span></div>
+      <div class="line"><b>Flag a rule problem</b><span>"Point of order. This item is not on the agenda."</span></div>
+      <div class="line"><b>Recuse</b><span>"I am recusing myself from this item due to a conflict of interest." Say it before discussion, then step away.</span></div>
+    </div>
+    <div class="scripts" id="s-chair" role="tabpanel" aria-labelledby="tab-chair" hidden>
+      <div class="line"><b>State the motion</b><span>"It has been moved and seconded that [motion]. Is there discussion?"</span></div>
+      <div class="line"><b>Keep order</b><span>"Please address your comments through the Chair." / "Let's hear from members who have not spoken yet."</span></div>
+      <div class="line"><b>Go to executive session</b><span>"We will now move into executive session for [personnel / confidential] matters. Guests, thank you; we will invite you back."</span></div>
+      <div class="line"><b>Call the vote</b><span>"Seeing no further discussion, the motion is [restate]. All in favor, say aye. Opposed? Abstaining?"</span></div>
+      <div class="line"><b>Announce</b><span>"With [X] yes, [Y] no, and [Z] abstaining, the motion carries / fails."</span></div>
+      <div class="line"><b>No second</b><span>"Hearing no second, the motion is not considered."</span></div>
+      <div class="line"><b>Rule on a point of order</b><span>"The point is well taken" or "not well taken," plus one sentence on why.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="voting">
+  <div class="wrap">
+    <div class="sec-head"><div class="tag" style="background:var(--navy)">4</div><h2>Voting &amp; Quorum</h2></div>
+    <div class="vote-grid">
+      <div class="vcard" style="background:var(--navy)"><h3>Quorum</h3><p>Minimum seated members needed to act. No quorum: discuss, but no votes.</p></div>
+      <div class="vcard" style="background:var(--teal)"><h3>Majority</h3><p>More than half of votes cast, unless bylaws say "of the board" or "of those present."</p></div>
+      <div class="vcard" style="background:var(--twothirds)"><h3>Two-thirds</h3><p>For anything that limits members' rights: closing or limiting debate, suspending rules.</p></div>
+      <div class="vcard" style="background:var(--coral)"><h3>Ties fail</h3><p>A tie means the motion does not pass.</p></div>
+      <div class="vcard" style="background:var(--navy-2)"><h3>Roll call</h3><p>Each member's vote is recorded by name in the minutes.</p></div>
+      <div class="vcard check"><h3>Check the Living Word Bylaws</h3><p>Quorum number, how abstentions count, and when the Chair votes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="guardrails">
+  <div class="wrap">
+    <div class="sec-head"><div class="tag" style="background:var(--coral)">5</div><h2>Church Board Guardrails</h2></div>
+    <p class="lede">These come before Robert's Rules. Every time.</p>
+    <div class="brown">
+      <ul>
+        <li><b>Bylaws first</b>Robert's Rules never overrides the Living Word Bylaws or the law. You can suspend Robert's Rules, never the Bylaws.</li>
+        <li><b>Conflicts out loud</b>Disclose any personal or family financial interest, then step out of the discussion and the vote.</li>
+        <li><b>Two-person money rule</b>No one handles church money alone. Two people count, two signatures approve large payments.</li>
+        <li><b>Child safety first</b>Anyone serving minors, including CBAC staff and volunteers, is screened and never alone with a child.</li>
+        <li><b>Decisions in writing</b>Every vote goes in the minutes. Major decisions get a signed, numbered resolution.</li>
+        <li><b>No casual email votes</b>Acting without a meeting needs every director's written consent, and only if the Bylaws allow it.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="mistakes">
+  <div class="wrap">
+    <div class="sec-head"><div class="tag" style="background:var(--gold);color:var(--navy)">6</div><h2>Oops &amp; Fixes</h2></div>
+    <div class="mistakes">
+      <div class="mk"><div class="oops">Discussing before a motion</div><div class="fix">Chair asks, "Is there a motion?" Then discuss.</div></div>
+      <div class="mk"><div class="oops">"I so move" with no details</div><div class="fix">State the full action. The Secretary needs exact words.</div></div>
+      <div class="mk"><div class="oops">Two ideas in one motion</div><div class="fix">"I move to divide the question."</div></div>
+      <div class="mk"><div class="oops">Shouting "Question!" to end debate</div><div class="fix">Say "I move the previous question." Needs a second and 2/3.</div></div>
+      <div class="mk"><div class="oops">Using "table" to kill a motion</div><div class="fix">Move to postpone indefinitely, or vote it down.</div></div>
+      <div class="mk"><div class="oops">A director with a conflict votes</div><div class="fix">Disclose, recuse, step out. The Secretary notes it in the minutes.</div></div>
+      <div class="mk"><div class="oops">Voting by email between meetings</div><div class="fix">Only with every director's written consent, if the Bylaws allow. Otherwise, wait for the meeting.</div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="quiz-band" id="quiz">
+  <div class="wrap">
+    <div class="sec-head"><div class="tag" style="background:var(--gold);color:var(--navy)">?</div><h2>Pop Quiz</h2></div>
+    <p class="lede">Tap your answer. Get 5 of 5 to earn Parliamentary Pro.</p>
+    <div class="score"><span id="score-text">0 of 5</span><div class="bar"><i id="score-bar"></i></div></div>
+    <div id="quiz-list"></div>
+    <div class="trophy" id="trophy" hidden>Parliamentary Pro unlocked!</div>
+    <button type="button" class="reset" id="reset">Start over</button>
+    <div class="relay">
+      <h3>Motion Relay warm-up</h3>
+      <p>Pair up and run one motion through all 6 steps in under 2 minutes. Rotate roles: Mover, Seconder, Chair, Secretary. Bonus point for adding an amendment.</p>
+    </div>
+  </div>
+</div>
+<footer><div class="wrap">Thelá Thatch Consulting · Living Word Community Church Board Development &amp; Governance Training · Based on Robert's Rules of Order Newly Revised. The Living Word Bylaws and the law take priority.</div></footer>
+
+<script>
+(function(){
+  var M = [
+    ["ranked","Adjourn","I move to adjourn.",1,0,0,"Majority",""],
+    ["ranked","Recess","I move to recess for 10 minutes.",1,0,1,"Majority",""],
+    ["ranked","Lay on the table","I move to lay the motion on the table.",1,0,0,"Majority","For urgent interruptions only. Never use it to kill a motion."],
+    ["ranked","Close debate","I move the previous question.",1,0,0,"2/3","Also called the previous question."],
+    ["ranked","Limit or extend debate","I move to limit debate to 2 minutes per speaker.",1,0,1,"2/3",""],
+    ["ranked","Postpone to a set time","I move to postpone this to the January meeting.",1,1,1,"Majority",""],
+    ["ranked","Refer to committee","I move to refer this to the Finance Committee.",1,1,1,"Majority",""],
+    ["ranked","Amend","I move to amend by striking X and inserting Y.",1,1,1,"Majority",""],
+    ["ranked","Main motion","I move that the board...",1,1,1,"Majority","The lowest rank. Everything above can interrupt it."],
+    ["anytime","Point of order","Point of order.",0,0,0,"Chair rules","A rule is being broken."],
+    ["anytime","Point of information","Point of information.",0,0,0,"No vote","You need a fact or a procedure answered."],
+    ["anytime","Appeal the Chair","I appeal the ruling of the Chair.",1,1,0,"Majority","A majority or a tie sustains the Chair."],
+    ["anytime","Division","Division.",0,0,0,"No vote","You doubt the announced result. The vote is retaken."],
+    ["anytime","Suspend the rules","I move to suspend the rules to...",1,0,0,"2/3","Cannot suspend the Bylaws or the law."],
+    ["revisit","Reconsider","I move to reconsider the vote on...",1,1,0,"Majority","Only someone on the winning side can make it."],
+    ["revisit","Rescind or amend","I move to rescind the motion adopted on...",1,1,1,"2/3","Majority if notice was given. Must be on the agenda at a later meeting."]
+  ];
+  var list = document.getElementById("motion-list");
+  function yn(label, v){ return '<span class="pill '+(v?'y':'n')+'">'+label+(v?' ✓':' ✗')+'</span>'; }
+  list.innerHTML = M.map(function(m){
+    var vcls = m[6]==="2/3" ? "t" : "v";
+    return '<article class="m" data-group="'+m[0]+'"><h3>'+m[1]+'</h3><q>'+m[2]+'</q><div class="pills">'+
+      yn("Second",m[3])+yn("Debate",m[4])+yn("Amend",m[5])+'<span class="pill '+vcls+'">'+m[6]+'</span></div>'+
+      (m[7]?'<p class="note">'+m[7]+'</p>':'')+'</article>';
+  }).join("");
+  var fb = document.querySelectorAll(".filters button");
+  fb.forEach(function(b){ b.addEventListener("click", function(){
+    fb.forEach(function(x){ x.setAttribute("aria-pressed", x===b?"true":"false"); });
+    var f = b.dataset.f;
+    list.querySelectorAll(".m").forEach(function(c){ c.hidden = !(f==="all" || c.dataset.group===f); });
+  });});
+
+  var tabs = document.querySelectorAll('[role="tab"]');
+  tabs.forEach(function(t){ t.addEventListener("click", function(){
+    tabs.forEach(function(x){ var on = x===t; x.setAttribute("aria-selected", on?"true":"false"); document.getElementById(x.getAttribute("aria-controls")).hidden = !on; });
+  });});
+
+  var Q = [
+    ["A member makes a motion and nobody seconds it. Does the board discuss it?", false, "No. It dies. Chair: \"Hearing no second, the motion is not considered.\""],
+    ["Someone shouts \"Question!\" Does debate end right away?", false, "No. Ending debate takes a seconded motion for the previous question and a 2/3 vote."],
+    ["A new idea comes up that is not on the agenda. Should the board vote on it tonight?", false, "No. Put it on a future agenda so every director can prepare. Check the Bylaws for emergency exceptions."],
+    ["The vote is 5 yes, 5 no. Does the motion pass?", false, "No. Ties fail."],
+    ["A director with a financial interest in a vote should disclose it and step out.", true, "True. Disclose, recuse, and note it in the minutes."]
+  ];
+  var ql = document.getElementById("quiz-list"), score = 0, done = 0;
+  function render(){
+    score = 0; done = 0; update();
+    document.getElementById("trophy").hidden = true;
+    ql.innerHTML = Q.map(function(q,i){
+      return '<div class="q"><p>'+(i+1)+'. '+q[0]+'</p><div class="opts"><button type="button" id="q'+i+'-yes" data-i="'+i+'" data-a="1">'+(i===4?'True':'Yes')+'</button><button type="button" id="q'+i+'-no" data-i="'+i+'" data-a="0">'+(i===4?'False':'No')+'</button></div><div class="answer" hidden>'+q[2]+'</div></div>';
+    }).join("");
+    ql.querySelectorAll("button").forEach(function(b){ b.addEventListener("click", pick); });
+  }
+  function pick(e){
+    var b = e.currentTarget, i = +b.dataset.i, choice = b.dataset.a==="1", correct = Q[i][1];
+    var box = b.closest(".q");
+    box.querySelectorAll("button").forEach(function(x){ x.disabled = true; if((x.dataset.a==="1")===correct) x.classList.add("right"); });
+    if(choice!==correct) b.classList.add("wrong"); else score++;
+    done++; box.querySelector(".answer").hidden = false; update();
+    if(done===Q.length && score===Q.length) document.getElementById("trophy").hidden = false;
+  }
+  function update(){
+    document.getElementById("score-text").textContent = score+" of "+Q.length;
+    document.getElementById("score-bar").style.width = (score/Q.length*100)+"%";
+  }
+  document.getElementById("reset").addEventListener("click", render);
+  render();
+})();
+</script>
+</body>
+</html>
